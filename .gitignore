@@ -1,0 +1,53 @@
+# ============================================================
+# SmolVLA + LIBERO 项目 .gitignore
+# 原则：只提交「自己写的关键代码」+ 文档 + 依赖清单
+# ============================================================
+
+# ---------- 密钥 / 本地环境（绝对不要提交）----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---------- 上游依赖源码 ----------
+# lerobot 是从 huggingface/lerobot 克隆的 410MB 源码本体，
+# 已通过 pip install -e lerobot 安装。别人 clone 后自己拉一份即可，
+# 不要把上游代码提交进自己的仓库（否则会变成 submodule/gitlink）。
+lerobot/
+
+# ---------- 运行产物 ----------
+outputs/
+wandb/
+runs/
+*.log
+MUJOCO_LOG.TXT
+
+# ---------- 模型权重（几十 GB，走 HF 缓存）----------
+models/*
+!models/.gitkeep
+
+# ---------- 已废弃文件归档（不需要就保留此行）----------
+_archive/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---------- 编辑器 / 系统 ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
