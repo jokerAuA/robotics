@@ -99,10 +99,9 @@ else:
         "~/.libero/config.yaml 存在",
         False,
         "缺失会让 import libero.libero 弹交互式 input() → 非交互环境直接 EOFError。\n"
-        "       修复命令：\n"
-        "       python -c \"import os,yaml; from libero.libero import get_default_path_dict; "
-        "p=os.path.expanduser('~/.libero'); os.makedirs(p, exist_ok=True); "
-        "yaml.dump(get_default_path_dict(), open(os.path.join(p,'config.yaml'),'w'))\"",
+        "       修复命令（回答 N = 使用默认路径即可）：\n"
+        "       echo \"N\" | python -c \"import libero.libero\"\n"
+        "       等价于 README.md「安装」第 5 步。",
     )
 
 # ------------------------------------------------------------------ 5
@@ -158,7 +157,7 @@ for n, ok, _ in RESULTS:
 failed = [n for n, ok, _ in RESULTS if not ok]
 if failed:
     print(f"\n❌ {len(failed)} 项未通过：{', '.join(failed)}")
-    print("   请对照上面的提示修复，常见原因见 README.md「已知坑」。")
+    print("   请对照上面的提示修复，常见原因见 README.md「常见问题」。")
     raise SystemExit(1)
 
 print("\n✅ 全部通过。可以运行： bash scripts/run.sh scripts/eval.py")

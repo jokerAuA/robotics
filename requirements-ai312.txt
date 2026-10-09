@@ -7,7 +7,7 @@
 #          --index-url https://download.pytorch.org/whl/cu126
 #   3. pip install -r requirements-ai312.txt      # 本文件
 #   4. pip install -e lerobot                     # LeRobot 本体，提供 lerobot-eval
-#   5. 初始化 LIBERO 配置（见 README.md 坑 2）
+#   5. 初始化 LIBERO 配置（见 README.md「安装」第 5 步）
 #
 # ⚠️ torch 必须用 cu126：
 #   - cu130 需要驱动 >= 580，本机驱动 550 不支持 → torch.cuda.is_available() 变 False
@@ -68,7 +68,7 @@ num2words>=0.5.14,<0.6.0
 # LIBERO 环境（仅 Linux）
 # ============================================
 # 装完后必须初始化 ~/.libero/config.yaml，否则 import libero.libero 会弹
-# 交互式 input() 并在非交互环境下抛 EOFError。修复命令见 README.md 坑 2。
+# 交互式 input() 并在非交互环境下抛 EOFError。修复命令见 README.md「安装」第 5 步。
 hf-libero>=0.1.4,<0.2.0
 
 # ============================================
