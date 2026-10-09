@@ -351,6 +351,16 @@ EOF
 hf download lerobot/libero --repo-type dataset
 ```
 
+> ⚠️ **实测提醒**：本机 HF 缓存里那份 `datasets--lerobot--libero` 其实**只有 `meta/` + `data/`，没有 `videos/`**
+> （即上面 ③ 从没真正跑完过）。而训练是按 mp4 逐帧解码取图的，缺视频跑不起来。
+> 另外 lerobot 默认下载走 `~/.cache/huggingface/lerobot/hub/`，与上面那个 `$HF_HOME/hub/` 不是同一处，会重复下。
+> 所以训练前请改用项目内的统一下载脚本（幂等、可体检）：
+>
+> ```bash
+> bash scripts/run.sh scripts/download_assets.py            # 数据集 + 基线权重
+> bash scripts/run.sh scripts/download_assets.py --check    # 只体检，不下载
+> ```
+
 ### 11.4 自己翻一翻
 
 ```bash
@@ -391,7 +401,9 @@ python -c "import pandas as pd;print(pd.read_parquet('$P/data/chunk-000/file-000
 └── projects/robotics/               【你的工作台】 → 412 MB
     ├── lerobot/                     ← LeRobot 源码本体（见下面"特例"）
     ├── scripts/  README.md  DATA_FLOW.md
-    ├── outputs/                     ← 评估结果 + 视频
+    ├── datasets/                    ← 训练数据集（scripts/download_assets.py 落地，~1.9 GB）
+    ├── models/                      ← 基线权重（scripts/download_assets.py 落地）
+    ├── outputs/                     ← 评估结果 + 视频；训练 checkpoint 在 outputs/train/
     └── requirements-ai312.txt       ← 重建环境的清单
 ```
 

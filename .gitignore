@@ -27,6 +27,9 @@ MUJOCO_LOG.TXT
 models/*
 !models/.gitkeep
 
+# ---------- 训练数据集（LIBERO 全量 ~1.9 GB，由 scripts/download_assets.py 落地）----------
+datasets/
+
 # ---------- 已废弃文件归档（不需要就保留此行）----------
 _archive/
 
