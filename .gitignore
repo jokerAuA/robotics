@@ -10,6 +10,9 @@
 *.pem
 *.key
 
+# ---------- 本地笔记（保留在本机，不上传远端）----------
+PITFALLS.md
+
 # ---------- 上游依赖源码 ----------
 # lerobot 是从 huggingface/lerobot 克隆的 410MB 源码本体，
 # 已通过 pip install -e lerobot 安装。别人 clone 后自己拉一份即可，
